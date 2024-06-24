@@ -60,10 +60,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "avakinitemdb-ui:build:production"
+              "browserTarget": "avakinitemdb-ui:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "avakinitemdb-ui:build:development"
+              "browserTarget": "avakinitemdb-ui:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
