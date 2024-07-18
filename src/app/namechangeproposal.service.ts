@@ -11,7 +11,7 @@ export class NameChangeProposalService {
   private baseApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.baseApiUrl = "http://localhost:8080/itemChanges";
+    this.baseApiUrl = "http://kat98radio.duckdns.org:8083/itemChanges";
   }
 
   get(uuid: string): Observable<any> {

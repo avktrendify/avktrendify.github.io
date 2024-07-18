@@ -12,7 +12,7 @@ export class ItemService {
   private baseApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.baseApiUrl = "http://localhost:8080/items";
+    this.baseApiUrl = "http://kat98radio.duckdns.org:8083/items";
   }
 
   search(title: string, category?: string, lang?: string, page?: number): Observable<any> {

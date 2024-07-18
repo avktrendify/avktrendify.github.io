@@ -12,7 +12,7 @@ export class ProposalService {
   private baseApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.baseApiUrl = "http://localhost:8080/proposals";
+    this.baseApiUrl = "http://kat98radio.duckdns.org:8083/proposals";
   }
 
   get(uuid: string): Observable<any> {
