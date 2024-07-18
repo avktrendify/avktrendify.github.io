@@ -19,7 +19,7 @@ export class Proposal {
             this.name = proposal.name;
             this.matchups = proposal.matchups;
             this.isActive = proposal.isActive;
-            this.createdOn = proposal.createdOn;
+            this.createdOn = new Date(proposal.createdOn);
         }
         
     }

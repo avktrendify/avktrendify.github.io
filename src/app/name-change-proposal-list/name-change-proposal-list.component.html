@@ -1,0 +1,53 @@
+<div *ngFor="let proposal of changeProposals" class="box is-shadowless has-background-dark">
+    <article class="media">
+        <div class="media-left">
+            <app-avakin-item-viewer [item]="proposal.item" [showTitle]="false" [showRemoveButton]="false" [isSpanish]="true"></app-avakin-item-viewer>
+        </div>
+    
+        <div class="media-content">
+
+            <div class="block">
+                {{ proposal.createdBy?.username }} propone cambiar:
+
+                <div class="box is-shadowless has-background-grey-ter m-0 p-2">
+                    <p class="subtitle is-6">{{ proposal.item.title_es }} <span class="has-text-warning">(original)</span></p>
+                </div>
+                <p class="has-text-centered">
+                    <span class="material-symbols-rounded has-text-primary is-size-2">keyboard_arrow_down</span>
+                </p>
+                <div class="box is-shadowless has-background-grey-ter m-0 p-2">
+                    <p class="subtitle is-6">{{ proposal.newTitle }} <span class="has-text-primary">(propuesto)</span></p>
+                </div>
+            </div>
+        
+            <div *ngIf="proposal.approved === null || proposal.approved === undefined" class="block">
+                <button (click)="actionButtonClick(proposal, true)" class="button is-fullwidth is-success">
+                    <span class="icon">
+                        <i class="material-symbols-rounded">check</i>
+                    </span>
+                    <span>Aprobar</span>
+                </button>
+                <button (click)="actionButtonClick(proposal, false)" class="button is-fullwidth is-danger mt-1">
+                    <span class="icon">
+                        <i class="material-symbols-rounded">close</i>
+                    </span>
+                    <span>Rechazar</span>
+                </button>
+            </div>
+
+            <span *ngIf="proposal.approved !== undefined && proposal.approved !== null" [ngClass]="{'has-text-success': proposal.approved, 'has-text-danger':!proposal.approved}">
+                <span *ngIf="proposal.approved" class="icon-text">
+                    <span class="material-symbols-rounded">check</span> Aprobado
+                </span>
+                
+                <span *ngIf="!proposal.approved" class="icon-text">
+                    <span class="icon material-symbols-rounded">close</span> Rechazado
+                </span>
+                
+                <!-- This is separate because that way it doesn't mess up with text alignment -->
+                <span> por {{ proposal.actionedBy!.username }} el {{ getDateAsString(proposal.actionedOn!) }}</span>
+            </span>
+        </div>
+    </article>
+</div>
+

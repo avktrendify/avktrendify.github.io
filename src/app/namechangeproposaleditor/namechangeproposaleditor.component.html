@@ -1,0 +1,57 @@
+<div class="modal" [ngClass]="{'is-active': show === true}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Sugerir cambio de nombre</p>
+        <button (click)="closeButtonClick()" class="button" aria-label="close">
+            <i class="icon"><span class="material-symbols-rounded">close</span></i>
+        </button>
+      </header>
+      <section class="modal-card-body">
+
+        <div class="notification is-info is-light">
+            <span class="icon-text">
+                <span class="material-symbols-rounded">info</span> Nuestra base de datos contiene nombres en español que podrían ser incorrectos. Si piensas que has encontrado un nombre incorrecto, puedes sugerir una corrección aquí.
+            </span>
+            <br/><br/>
+            Tu sugerencia será revisada y aprobada por un administrador
+        </div>
+
+        <div *ngIf="showSuccess === true" class="notification is-success is-light">
+            <span class="icon-text"><span class="material-symbols-rounded is-size-6">check</span> Gracias, tu sugerencia ha sido creada</span>
+        </div>
+
+        <article class="media">
+
+            <div class="media-left">
+                <app-avakin-item-viewer [item]="changeProposal.item" [showTitle]="false" [showRemoveButton]="false" [isSpanish]="true"></app-avakin-item-viewer>
+            </div>
+
+            <div class="media-content">
+
+                <form class="form">
+                    <div class="field">
+                        <div class="label">Nombre original</div>
+                        <div class="control is-expanded">
+                            <input [(ngModel)]="changeProposal.item.title_es" name="itemTitle" class="input" type="text" disabled [title]="changeProposal.item.title_es">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">Nombre sugerido</div>
+                        <div class="control is-expanded">
+                            <input [(ngModel)]="changeProposal.newTitle" name="newItemTitle" class="input" type="text" placeholder="Nuevo nombre">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </article>
+
+      </section>
+      <footer class="modal-card-foot">
+        <div class="buttons is-right">
+          <button (click)="createChangeProposalClick()" class="button is-success">Crear sugerencia</button>
+        </div>
+      </footer>
+    </div>
+</div>

@@ -15,13 +15,14 @@ export class ItemService {
     this.baseApiUrl = "http://localhost:8080/items";
   }
 
-  search(title: string, category?: string, page?: number): Observable<any> {
+  search(title: string, category?: string, lang?: string, page?: number): Observable<any> {
     let params: any = {
       title: title
     };
 
     if (page) params.page = page;
     if (category) params.category = category;
+    if (lang) params.lang = lang;
 
     return this.http.get(`${this.baseApiUrl}`, {
       params: params

@@ -15,16 +15,13 @@ export class UserService {
   }
 
   authenticate(username: string, password?: string): Observable<any> {
+    if (!password) password = "dummy";
     console.log(username, password);
     
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'Basic ' + btoa(username + ':' + password),
       'Content-Type': 'application/json'
     });
-
-    // let body = new URLSearchParams();
-    // body.set('username', username);
-    // body.set('password', password!);
     
     return this.http.get(`${this.baseApiUrl}/getUser`, {headers: headers});
   }
